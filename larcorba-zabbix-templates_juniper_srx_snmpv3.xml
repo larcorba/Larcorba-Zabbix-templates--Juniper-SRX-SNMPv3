@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2019-10-25T17:44:42Z</date>
+    <date>2019-11-17T16:23:21Z</date>
     <groups>
         <group>
-            <name>Networking Hardware</name>
-        </group>
-        <group>
-            <name>Templates</name>
+            <name>Networking Hardware SNMPv3</name>
         </group>
     </groups>
     <templates>
@@ -21,10 +18,7 @@
             </templates>
             <groups>
                 <group>
-                    <name>Networking Hardware</name>
-                </group>
-                <group>
-                    <name>Templates</name>
+                    <name>Networking Hardware SNMPv3</name>
                 </group>
             </groups>
             <applications>
@@ -38,10 +32,149 @@
                     <name>Interfaces</name>
                 </application>
                 <application>
+                    <name>Inventory</name>
+                </application>
+                <application>
+                    <name>Optics</name>
+                </application>
+                <application>
                     <name>Performance</name>
                 </application>
             </applications>
             <items>
+                <item>
+                    <name>JunOS Inventory - Hardware</name>
+                    <type>SNMPV3</type>
+                    <snmp_oid>1.3.6.1.4.1.2636.3.1.2.0</snmp_oid>
+                    <key>INVHardware</key>
+                    <delay>30m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
+                    <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>SHA</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_authpassphrase>
+                    <snmpv3_privprotocol>AES</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_privpassphrase>
+                    <inventory_link>HARDWARE</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>TRIM</type>
+                            <params>node1 Juniper</params>
+                        </step>
+                        <step>
+                            <type>TRIM</type>
+                            <params>node0 Juniper</params>
+                        </step>
+                        <step>
+                            <type>TRIM</type>
+                            <params>Juniper</params>
+                        </step>
+                        <step>
+                            <type>TRIM</type>
+                            <params>Internet Router</params>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>JunOS Inventory - Hostname</name>
+                    <type>SNMPV3</type>
+                    <snmp_oid>1.3.6.1.2.1.1.5.0</snmp_oid>
+                    <key>INVName</key>
+                    <delay>30m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
+                    <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>SHA</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_authpassphrase>
+                    <snmpv3_privprotocol>AES</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_privpassphrase>
+                    <inventory_link>NAME</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>JunOS Inventory - Serial Number 0</name>
+                    <type>SNMPV3</type>
+                    <snmp_oid>1.3.6.1.4.1.2636.3.1.8.1.7.1.1.0.0</snmp_oid>
+                    <key>INVSerial0</key>
+                    <delay>30m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
+                    <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>SHA</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_authpassphrase>
+                    <snmpv3_privprotocol>AES</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_privpassphrase>
+                    <inventory_link>SERIALNO_A</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>JunOS Inventory - Serial Number 1</name>
+                    <type>SNMPV3</type>
+                    <snmp_oid>1.3.6.1.4.1.2636.3.1.8.1.7.1.2.0.0</snmp_oid>
+                    <key>INVSerial1</key>
+                    <delay>30m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
+                    <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>SHA</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_authpassphrase>
+                    <snmpv3_privprotocol>AES</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_privpassphrase>
+                    <inventory_link>SERIALNO_B</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>JunOS Inventory - Software</name>
+                    <type>SNMPV3</type>
+                    <snmp_oid>1.3.6.1.2.1.25.6.3.1.2.2</snmp_oid>
+                    <key>INVSoftware</key>
+                    <delay>30m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
+                    <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>SHA</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_authpassphrase>
+                    <snmpv3_privprotocol>AES</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_privpassphrase>
+                    <inventory_link>OS</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Inventory</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>TRIM</type>
+                            <params>JUNOS Software Release</params>
+                        </step>
+                        <step>
+                            <type>TRIM</type>
+                            <params>[]</params>
+                        </step>
+                    </preprocessing>
+                </item>
                 <item>
                     <name>Session creation per second (for last 96 second average)</name>
                     <type>SNMPV3</type>
@@ -66,7 +199,6 @@
                     <name>Flow sessions (Available)</name>
                     <type>CALCULATED</type>
                     <key>jnxJsSPUMonitoringAvailableFlowSession.0</key>
-                    <delay>60</delay>
                     <units>%</units>
                     <params>((last(&quot;jnxJsSPUMonitoringMaxFlowSession.0&quot;)-last(&quot;jnxJsSPUMonitoringCurrentFlowSession.0&quot;))/last(&quot;jnxJsSPUMonitoringMaxFlowSession.0&quot;))*100</params>
                     <applications>
@@ -104,7 +236,7 @@ Review Device type</description>
                     <type>SNMPV3</type>
                     <snmp_oid>1.3.6.1.4.1.2636.3.39.1.12.1.1.1.4.0</snmp_oid>
                     <key>jnxJsSPUMonitoringCPUUsage.0</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -138,7 +270,7 @@ counts</description>
                     <type>SNMPV3</type>
                     <snmp_oid>1.3.6.1.4.1.2636.3.39.1.12.1.1.1.4.10</snmp_oid>
                     <key>jnxJsSPUMonitoringCPUUsage.10</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -172,7 +304,6 @@ counts</description>
                     <type>SNMPV3</type>
                     <snmp_oid>1.3.6.1.4.1.2636.3.39.1.12.1.1.1.6.0</snmp_oid>
                     <key>jnxJsSPUMonitoringCurrentFlowSession.0</key>
-                    <delay>60</delay>
                     <units>sessions</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -192,7 +323,6 @@ counts</description>
                     <type>SNMPV3</type>
                     <snmp_oid>1.3.6.1.4.1.2636.3.39.1.12.1.1.1.7.0</snmp_oid>
                     <key>jnxJsSPUMonitoringMaxFlowSession.0</key>
-                    <delay>60</delay>
                     <units>sessions</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -212,7 +342,7 @@ counts</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.39.1.12.1.1.1.5.0</snmp_oid>
                     <key>jnxJsSPUMonitoringMemoryUsage.0</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -245,7 +375,7 @@ Disable non needed ALGs</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.39.1.12.1.1.1.5.10</snmp_oid>
                     <key>jnxJsSPUMonitoringMemoryUsage.10</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -278,7 +408,7 @@ Disable non needed ALGs</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.1.13.1.11.9.1.0.0</snmp_oid>
                     <key>jnxOperatingBuffer.9.1.0.0</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -311,7 +441,7 @@ Review system logs</description>
                     <type>SNMPV3</type>
                     <snmp_oid>1.3.6.1.4.1.2636.3.1.13.1.11.9.2.0.0</snmp_oid>
                     <key>jnxOperatingBuffer.9.2.0.0</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -344,7 +474,7 @@ Review system logs</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.1.13.1.8.9.1.0.0</snmp_oid>
                     <key>jnxOperatingCPU.9.1.0.0</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -377,7 +507,7 @@ Verify system processes</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.1.13.1.8.9.2.0.0</snmp_oid>
                     <key>jnxOperatingCPU.9.2.0.0</key>
-                    <delay>30</delay>
+                    <delay>2m</delay>
                     <units>%</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -410,7 +540,7 @@ Verify system processes</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.1.13.1.7.9.1.0.0</snmp_oid>
                     <key>jnxOperatingTemp.9.1.0.0</key>
-                    <delay>60</delay>
+                    <delay>5m</delay>
                     <units>°C</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -437,7 +567,7 @@ Verify system processes</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.1.13.1.7.9.2.0.0</snmp_oid>
                     <key>jnxOperatingTemp.9.2.0.0</key>
-                    <delay>60</delay>
+                    <delay>5m</delay>
                     <units>°C</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -464,7 +594,7 @@ Verify system processes</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.4.2.3.1.0</snmp_oid>
                     <key>jnxRedAlarmState</key>
-                    <delay>30</delay>
+                    <delay>60</delay>
                     <units>alarm(s)</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -491,7 +621,7 @@ Verify system processes</description>
                     <type>SNMPV3</type>
                     <snmp_oid>.1.3.6.1.4.1.2636.3.4.2.2.1.0</snmp_oid>
                     <key>jnxYellowAlarmState</key>
-                    <delay>60</delay>
+                    <delay>2m</delay>
                     <units>alarm(s)</units>
                     <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                     <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
@@ -717,7 +847,7 @@ Verify system processes</description>
                             <key>1.3.6.1.2.1.2.2.1.20.[{#SNMPINDEX}]</key>
                             <delay>2m</delay>
                             <history>2w</history>
-                            <snmpv3_securityname>{$PA_V3_USER}</snmpv3_securityname>
+                            <snmpv3_securityname>{$JUN_V3_USER}</snmpv3_securityname>
                             <snmpv3_securitylevel>AUTHPRIV</snmpv3_securitylevel>
                             <snmpv3_authprotocol>SHA</snmpv3_authprotocol>
                             <snmpv3_authpassphrase>{$JUN_V3_AUTHPASS}</snmpv3_authpassphrase>
